@@ -8,18 +8,19 @@ import { setProducts } from '../redux/actions/productActions';
 
 function ProductList(props) {
     const dispatch = useDispatch()
-    const products = useSelector(state=>state)
-    const fetchProducts = async()=> {const res= await axios.get("https://fakestoreapi.com/products")
-                                    dispatch(setProducts(res.data))
-}
-    useEffect(()=>{
+    const products = useSelector(state => state)
+    const fetchProducts = async () => {
+        const res = await axios.get("https://fakestoreapi.com/products")
+        dispatch(setProducts(res.data))
+    }
+    useEffect(() => {
         fetchProducts()
-    },[])
+    }, [])
 
     console.log(products)
     return (
         <div className='ui grid container'>
-            <ProductComponent/>
+            <ProductComponent />
         </div>
     );
 }
